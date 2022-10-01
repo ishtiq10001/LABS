@@ -109,19 +109,6 @@ def question_7(p,q,r):
         print("not sorted")
     
 
-def question_8(a,b,c,d):
-    
-    if (a == b == c == d):
-        print("two pairs")
-        
-    elif((a != b or c or d) and (c == a or b or c)):
-        print("not two pairs")
-    elif((a == b or c or d) and (b == a or c or d)):
-        print("two pairs")      
-    elif((c == a or b or d) and (d == a or b or c)):
-        print("two pairs")
-    else:
-        print("Not two pairs")
     
 def question_8(a,b,c,d):
     if (a == b == c == d):
