@@ -123,7 +123,7 @@ def question_8(a,b,c,d):
     else:
         print("Not two pairs")
     
-def question_8(w,x,y,z):
+def question_8(a,b,c,d):
     if (a == b == c == d):
         print("two pairs")
         
