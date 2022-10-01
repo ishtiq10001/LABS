@@ -130,38 +130,26 @@ def question_8(a,b,c,d):
 
 
 def question_9(T):
-
-    count = 0
-    arr = []
-    for num in T:   #seperating the unit(string) and the temperature(int)
-        if (count == len(T)-1): # and storing it on a list
-            break 
-        arr.append(int(num))
-        count +=1 
-
-    value = 0
-    count = 0
-    while (count < len(arr)):#converting the elements on the list to a whole number
-        value += 10**((len(arr)-1)-count) * arr[count]
-        count +=1
-        
+    value = int(T[0:len(T)-1])
     if ("C" in T):
         if (value <= 0):
             print("Solid")
         elif(value > 0 and value < 100):
-            print("liquid")
+            print("Liquid")
         else:
-            print("gas")            
+            print("Gas")            
     elif ("F" in T):
         if (value <= 32):
-            print("ice")
+            print("Solid")
         elif(value > 32 and value < 212):
-            print("liquid")
+            print("Liquid")
         else:
-            print("gas")
-            
+            print("Gas")   
     else:
         print("Temperature type not given")
+        
+    
+  
     
 def question_10(grade):
     value = 0.3
