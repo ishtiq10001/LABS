@@ -124,12 +124,20 @@ def question_8(a,b,c,d):
         print("Not two pairs")
     
 def question_8(w,x,y,z):
-    pairs = 0
-    arr = [w,x,y,z]
-    
-    for num in arr:
-        if (num == arr):
-            pairs +=1
+    if (a == b == c == d):
+        print("two pairs")
+        
+    elif(a == b and c == d):
+        print("Two pairs")
+        
+    elif(a == c and b == d):
+        print("Two pairs")
+        
+    elif(a == d and b == c):
+        print("Two pairs")
+  
+    else:
+        print("Not two pairs")
         
     
 
@@ -226,10 +234,6 @@ def question_10(grade):
         print(base)
         
 
-    #question_9("132F")
-    #question_10("F+")
-        
-
 if (__name__ == "__main__"):
     #question_1(-100)
     #question_2(0.99)
@@ -239,5 +243,5 @@ if (__name__ == "__main__"):
     #question_6(1,1,1,"linient")
     #question_7(-3,0,1)
     question_8(3,3,3,2)
-	#question_9("132F")
+    #question_9("132F")
     #question_10("F+")
