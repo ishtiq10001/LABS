@@ -65,10 +65,28 @@ def question_6(): # works
 def question_7(x):
     arr = []
     for char in x:
-        if char:
-            arr.append(char)
-        else:
+        try:
+            arr.append(int(char))
+        except:
             pass
+    num = 0 
+    counter = 0
+    while True:
+       if counter == len(arr):
+           break
+       else:
+           num += arr[counter]
+           counter +=1
+    print(num)
+
+def question_8(x):
+    arr = x.split(",")
+    sum = 0 
+    for i in arr:
+        sum += float(i)
+        
+    print(sum)
+ 
     print(arr)
 if (__name__ == "__main__"):
     # question_1()
