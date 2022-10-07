@@ -89,11 +89,11 @@ def question_8(x):
         
     
 if (__name__ == "__main__"):
-    # question_1()
-    # question_2()
-    # question_3()
-    # question_4(input("lower bound: "),input("upper bound: "))
-    # question_5(str(13))
-    # question_6()
-    question_7("wh3at ar23e you doing1")
-    question_8("3.2,43.3")
+    question_1()
+    question_2()
+    question_3()
+    question_4(input("lower bound: "),input("upper bound: "))
+    question_5(str(input("enter numbers: ")))
+    question_6()
+    question_7(str(input("enter a sentence with numbers in it: ")))
+    question_8(input("enter decimal numbers using commas to seperate them: "))
