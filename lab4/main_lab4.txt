@@ -41,7 +41,7 @@ def question_5(n):
             
 
 def question_6(): # works
-    counter = 0
+    counter = 1
     arr = []
     while counter <= 10:
         user = int(input("number " + str(counter)+ ": "))
