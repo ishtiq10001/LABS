@@ -21,7 +21,7 @@ def question_2():
 def question_3():
     for i in range(0,21):
         val = 2**i
-        print(val)
+        print("2^"+str(i)+": "+str(val))
 
 def question_4(a,b):
     sum = 0
