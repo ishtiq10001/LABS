@@ -22,8 +22,10 @@ def maxL(L):
 
         else:
             pass
-
-    return (max(fl_list))
+    if len(fl_list) == 0:
+        return None
+    else:
+        return (max(fl_list))
     
 
 def longest(L):
@@ -79,20 +81,47 @@ def perimeter(poly):
     mag = sqrt((poly[1][0]-poly[0][0])**2 + (poly[1][1]-poly[0][1])**2)
     print(mag)
 
-def 
+def permutation(L):
+    P = []
+    C = list(L)
+
+    for x in range(0,len(C)):
+        i = randrange(0,len(C))
+        P.append(C[i])
+        C.pop(i)
+    
+    return P
+        
+def listGen():#list generator that creates a random list
+    L  = []
+    for i in range(0,30):
+        g = randrange(0,31)
+        L.append(g)
+    return L
 
 if __name__ == "__main__" :
-    #question_1('y','2','3','4','c')
-    #print(maxL([24,"2",2.4,5.6,7.8,"blue"]))
-    #print(longest(['the sky is blue', 'this is a long string', 'the white house', 'green']))
-    #question_4([],())
-    #question_5([])
-    #x1 = 5
-    #x2 = 6
-    #y1 = 4
-    #y2 = 7
-    #perimeter([(x1,y1),(x2,y2)])
-    
+    question_1('the blue moon','the red guitar','go home','spill the beans','winter in Oklahoma')
+    print(maxL([100, 'blue', 3.5, 'sugar on the rocks', 7.0]))
+    print(maxL([7, 2, 9, 1]))
+    print(longest(['the sky is blue', 'this is a long string', 'the white house', 'green']))
+    question_4([],())
+    question_5([])
+
+    x1 = 5
+    x2 = 6
+    y1 = 4
+    y2 = 7
+    #sqrt ((x2       -  x1) ^2        +     ( y2 -   y1) ^2)
+    # = 3.1622776601683795 
+    perimeter([(x1,y1),(x2,y2)])
+
+    L_1 = [19, 4, 3, 17]
+    poly = [(0, 0), (20, 0), (20, 10), (0, 10)]
+    #print(permutation(listGen()))
+    print("1 -- "+ str(permutation(range(0,30))))
+    print("2 -- "+ str(permutation(range(0,30))))
+    print("3 -- "+ str(permutation(L_1)))
+    print("4 -- "+ str(permutation(poly)))
 
 
     
