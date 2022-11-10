@@ -3,14 +3,19 @@ from math import *
 from random import *
 
 
-def dice_gen(n):#returns list of randomly generated dice values
+def dice_gen(n,t):#returns list of randomly generated values
     D_list = []
     
     for rand in range(1,n+1):
-        D_list.append(randint(1,6))
-       
+        if t == False:
+            D_list.append(randint(1,6))
+        else:
+            if randint(0,1) == 0:
+                D_list.append(False)
+            else:
+                D_list.append(True)
         
-    
+        
     return D_list
 
 def question_1(dice):
@@ -80,7 +85,10 @@ def sequenceFinder(L):
                 
         else:
             pass
-    return t_list[longest_seq(mag_elem(t_list))]
+    if len(t_list) == 0:
+        pass
+    else:
+        return t_list[longest_seq(mag_elem(t_list))]
     
 
     
@@ -119,6 +127,56 @@ def question_2(orig_list, indx):
     
     return orig_list
     
+
+def longestFalse(L):
+    start = 0
+    end = 0
+    counter = 0
+
+    t_list = []
+    print(L)
+    while True: 
+        
+        if (counter > 0 and counter < len(L)-1):
+            if L[counter] == False:
+                if L[counter] == L[counter+1] and L[counter] != L[counter-1]:
+                    start = counter
+                    counter +=1
+                elif L[counter] == L[counter-1] and L[counter] != L[counter+1]:
+                    end = counter
+                    t_list.append((start,end))
+                    counter +=1
+
+                else:
+                    counter +=1
+            else:
+                counter +=1
+        elif counter == 0:
+            if L[counter] == False:
+                if L[counter] == L[counter+1]:
+                    start = counter
+                    counter +=1
+                else:
+                    counter +=1
+
+            else:
+                counter +=1
+        elif counter == len(L)-1:
+            if L[counter] == False:
+                if L[counter] == L[counter-1]:
+                    end = counter
+                    t_list.append((start,end))
+                    break
+                else:
+                    break
+            else:
+                counter +=1
+        else:
+            break
+    if len(t_list) == 0:
+        pass
+    else:
+        print(t_list[longest_seq(mag_elem(t_list))])
          
 
 def question_5(P):
@@ -130,19 +188,37 @@ def question_5(P):
         counter -=1
 
     if original == reverse:
-        return True
+        print("this list is a palindrome")
     else:
-        return False
+        print("this list is not a palindrome")
     
         
 
 
 if __name__ == "__main__":
-    #t_List1 = [2,1,2,3,4,4,3,2,1,2]
-    #print(question_1(dice_gen(20)))
-    #print(question_5(t_List1))
-    #print(f(dice_gen(20)))
-    #print(longest_seq([4,5,5,5,2,1,3,4,2,1]))
-    randlist = dice_gen(20)
-    sequence = sequenceFinder(randlist)
-    print(question_2(randlist,sequence))
+    counter = 0
+    while True:
+        if counter == 20:
+            break
+        counter +=1
+        #question1
+        print("Q1")
+        question_1(dice_gen(20,False))
+        
+
+        #question 2
+        print("Q2")
+        randDice = dice_gen(20,False)
+        sequence = sequenceFinder(randDice)
+        print(question_2(randDice,sequence))
+
+        #question 3
+        print("Q3")
+        randFalse = dice_gen(10,True)
+        longestFalse(randFalse)
+        
+        #question 5
+        print("Q5")
+        t_List1 = [0,2,2,3,3,2,2,0]
+        question_5(t_List1)
+    
