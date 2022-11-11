@@ -1,7 +1,7 @@
 from cmath import *
 from math import *
 from random import *
-
+from statistics import *
 
 def dice_gen(n,t):#returns list of randomly generated values
     D_list = []
@@ -45,7 +45,7 @@ def question_1(dice):
                 new_list.append(str(dice[value]))
             
         value +=1
-    print(" ".join(str(x) for x in new_list))
+    print(" ".join(str(x) for x in new_list)) #formatting
                 
                 
 def sequenceFinder(L):
@@ -55,8 +55,7 @@ def sequenceFinder(L):
 
     t_list = []
     print(L)
-    while True:
-        
+    while True:     
         if (counter != 0 and counter != len(L)-1):
             if L[counter] == L[counter+1] and L[counter] != L[counter-1]:
                 start = counter
@@ -89,7 +88,7 @@ def sequenceFinder(L):
         pass
     else:
         return t_list[longest_seq(mag_elem(t_list))]
-    
+        
 
     
 
@@ -128,17 +127,19 @@ def question_2(orig_list, indx):
     return orig_list
     
 
-def longestFalse(L):
+def longestFalse(L, p=False): #question 3
     start = 0
     end = 0
     counter = 0
 
     t_list = []
-    print(L)
-    while True: 
-        
+    if p==False:
+        print(L)
+    else:
+        pass
+    while True:      
         if (counter > 0 and counter < len(L)-1):
-            if L[counter] == False:
+            if L[counter] == p:
                 if L[counter] == L[counter+1] and L[counter] != L[counter-1]:
                     start = counter
                     counter +=1
@@ -152,7 +153,7 @@ def longestFalse(L):
             else:
                 counter +=1
         elif counter == 0:
-            if L[counter] == False:
+            if L[counter] == p:
                 if L[counter] == L[counter+1]:
                     start = counter
                     counter +=1
@@ -162,7 +163,7 @@ def longestFalse(L):
             else:
                 counter +=1
         elif counter == len(L)-1:
-            if L[counter] == False:
+            if L[counter] == p:
                 if L[counter] == L[counter-1]:
                     end = counter
                     t_list.append((start,end))
@@ -176,8 +177,50 @@ def longestFalse(L):
     if len(t_list) == 0:
         pass
     else:
-        print(t_list[longest_seq(mag_elem(t_list))])
-         
+        return t_list[longest_seq(mag_elem(t_list))]
+            
+
+
+
+def occupy(emp):
+    """
+        1. get highest sequence tuple
+        2. mean(highest sequence tuple)
+        3. ceil that
+        4. put X on the index of the ceil
+        5. reiterate until all indexes have X
+
+    """
+    counter = 0
+    counter2 = 0
+    while True:  
+        
+        nest = longestFalse(emp,"_")
+        
+        if nest == None:
+            if emp[counter2] == "_":
+                nest = counter2
+                emp[nest] = "X"   
+                print(emp)
+                counter2 +=1
+
+            else:
+                counter2+=1
+        else:
+            
+            m = mean(nest)
+            c = ceil(m)
+            emp[c] = "X"
+            print(emp)
+        
+        
+        if emp == ['X','X','X','X','X','X','X','X','X','X']:
+            break
+        else:
+            counter +=1
+            
+
+
 
 def question_5(P):
     original = P
@@ -196,29 +239,24 @@ def question_5(P):
 
 
 if __name__ == "__main__":
-    counter = 0
-    while True:
-        if counter == 20:
-            break
-        counter +=1
-        #question1
-        print("Q1")
-        question_1(dice_gen(20,False))
-        
-
-        #question 2
-        print("Q2")
-        randDice = dice_gen(20,False)
-        sequence = sequenceFinder(randDice)
-        print(question_2(randDice,sequence))
-
-        #question 3
-        print("Q3")
-        randFalse = dice_gen(10,True)
-        longestFalse(randFalse)
-        
-        #question 5
-        print("Q5")
-        t_List1 = [0,2,2,3,3,2,2,0]
-        question_5(t_List1)
+    emp = ["_","_","_","_","_","_","_","_","_","_"]  
+    #question1
+    print("Q1")
+    question_1(dice_gen(20,False))     
+    #question 2
+    print("Q2")
+    randDice = dice_gen(20,False)
+    sequence = sequenceFinder(randDice)
+    print(" ".join(str(x) for x in question_2(randDice,sequence))) #formatting
     
+    #question 3
+    print("Q3")
+    randFalse = dice_gen(10,True)
+    print(longestFalse(randFalse, False))
+    #question 4
+    print("Q4")
+    occupy(emp)
+    #question 5
+    print("Q5")
+    t_List1 = [0,2,2,3,3,2,2,0]
+    question_5(t_List1)
