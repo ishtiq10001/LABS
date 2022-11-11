@@ -1,12 +1,12 @@
 from math import *
-from random import *
+from random import * # incase we need them
 # global dictionary caesars cyhper so that it is accessable by all functions
 caesar = {'a':'x' , 'b':'y' ,'c':'z' ,'d':'a' ,'e':'b' ,'f':'c' ,'g':'d' ,'h':'e' ,'i':'f' ,'j':'g' ,'k':'h' ,'l':'i' ,'m':'j' ,'n':'k' ,'o':'l' ,'p':'m' ,'q':'n' ,'r':'o' ,'s':'p' ,'t':'q' ,'u':'r' ,'v':'s' ,'w':'t' ,'x':'u' ,'y':'v' ,'z':'w'}
 
 
 
 def decypher(a,b):
-    for x in a: #a is a list, we need to read the strings
+    for x in a: #a is a list, we need to read the letters
         for y in x: # so we need 2 for loops go read the letters
             for i,j in caesar.items():#we need a third loop to go through the caesar dictionary
                 if y.isupper(): #if the letter is upper case                  
@@ -37,12 +37,15 @@ def decypher(a,b):
 
 
 if __name__ == "__main__":
-    file_I = open('secret_code.txt', 'r') #opening secret code file
-    secret_code = file_I.readlines() #reading the text from the file line by line
-    file_I.close() #closing the file
-    code = decypher(secret_code, '')# calling the code decipher function
-    code = "https://tinyurl.com/"+code #combining the code with the url
-    with open('code_cracked.txt','w') as file_O:#opening a new text file as write mode
-        file_O.write(code)#adding/writing the secret code to this file 
-        file_O.close()# closing the file
-    
+    try:#error handling
+        file_I = open('secret_code.txt', 'r') #opening secret code file
+        secret_code = file_I.readlines() #reading the text from the file line by line
+        file_I.close() #closing the file
+        code = decypher(secret_code, '')# calling the code decipher function
+        code = "https://tinyurl.com/"+code #combining the code with the url
+        with open('code_cracked.txt','w') as file_O:#opening a new text file as write mode
+            file_O.write(code)#adding/writing the secret code to this file 
+            file_O.close()# closing the file
+        print("success")
+    except:#if the file doesnt exist or it cant be read or written
+        print("error")
