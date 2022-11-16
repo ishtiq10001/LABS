@@ -13,5 +13,5 @@ def gcd(a,b):
     else:
         return gcd(a,b % a)
 
-
-print(gcd(40, 5))
+print("GCD Calculator")
+print(gcd(input("first number: "), input("second number: ")))
