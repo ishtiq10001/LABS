@@ -1,7 +1,7 @@
 from math import *
 from cmath import *
 
-def gcd(a,b):
+def gcd(int(a),int(b)):
     if a == 0 and b == 0:
         return None
     if a == 0:
