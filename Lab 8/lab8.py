@@ -97,8 +97,9 @@ def gcContent(sequence):
 if __name__ == "__main__":
     print(add_rec(5,9)) #question 1
     print(log2(23)) #question2
-    print(reverse('sentence'))#question 3
+    print(reverse('This is a reverse string'))#question 3
     print(power(3,9))#question 4
+
     #question 5
     print(f"2**10 = {power(2,10)}, recursion called: {countcalls} times")
     countcalls = 0
