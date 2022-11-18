@@ -89,7 +89,7 @@ def gcContent(sequence):
 
     print(f"percentage of G: {percG}")
     print(f"percentage of C: {percC}")
-
+    print(f"percentage of C and G: {percG+percC}")
 
 
 
